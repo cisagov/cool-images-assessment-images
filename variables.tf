@@ -4,32 +4,45 @@
 # You must provide a value for each of these parameters.
 # ------------------------------------------------------------------------------
 
-variable "subnet_id" {
-  type        = string
-  description = "The ID of the AWS subnet to deploy into (e.g. subnet-0123456789abcdef0)"
-}
-
 # ------------------------------------------------------------------------------
 # OPTIONAL PARAMETERS
 #
 # These parameters have reasonable defaults.
 # ------------------------------------------------------------------------------
-variable "ami_owner_account_id" {
+variable "assessment_images_bucket_name" {
   type        = string
-  description = "The ID of the AWS account that owns the Example AMI, or \"self\" if the AMI is owned by the same account as the provisioner."
-  default     = "self"
-}
-
-variable "aws_availability_zone" {
-  type        = string
-  description = "The AWS availability zone to deploy into (e.g. a, b, c, etc.)"
-  default     = "a"
+  description = "The base name to use for the assessment images S3 buckets."
+  default     = "cisa-cool-assessment-images"
 }
 
 variable "aws_region" {
   type        = string
-  description = "The AWS region to deploy into (e.g. us-east-1)"
+  description = "The AWS region where the Images account is to be created (e.g. \"us-east-1\")."
   default     = "us-east-1"
+}
+
+variable "provisionaccount_role_name" {
+  type        = string
+  description = "The name of the IAM role that allows sufficient permission to provision all AWS resources in the Images account."
+  default     = "ProvisionAccount"
+}
+
+variable "provisionassessmentimagesbucket_policy_description" {
+  type        = string
+  description = "The description to associate with the IAM policy that allows provisioning of S3 buckets in the Images account."
+  default     = "Allows provisioning of S3 buckets in the Images account."
+}
+
+variable "provisionassessmentimagesbucket_policy_name" {
+  type        = string
+  description = "The name to assign the IAM policy that allows provisioning of S3 buckets in the Images account."
+  default     = "ProvisionBuckets"
+}
+
+variable "read_terraform_state_role_name" {
+  type        = string
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows read-only access to the cool-images-assessment-images state in the S3 bucket where Terraform state is stored."
+  default     = "ReadImagesAssessmentImagesTerraformState"
 }
 
 variable "tags" {

@@ -1,24 +1,14 @@
-output "arn" {
-  value       = aws_instance.example.arn
-  description = "The EC2 instance ARN"
+output "assessment_images_bucket_production" {
+  value       = aws_s3_bucket.assessment_images_production
+  description = "The S3 bucket to store assessment images in the Images (Production) account."
 }
 
-output "availability_zone" {
-  value       = aws_instance.example.availability_zone
-  description = "The AZ where the EC2 instance is deployed"
+output "assessment_images_bucket_staging" {
+  value       = aws_s3_bucket.assessment_images_staging
+  description = "The S3 bucket to store assessment images in the Images (Staging) account."
 }
 
-output "id" {
-  value       = aws_instance.example.id
-  description = "The EC2 instance ID"
-}
-
-output "private_ip" {
-  value       = aws_instance.example.private_ip
-  description = "The private IP of the EC2 instance"
-}
-
-output "subnet_id" {
-  value       = aws_instance.example.subnet_id
-  description = "The ID of the subnet where the EC2 instance is deployed"
+output "read_terraform_state" {
+  value       = module.read_terraform_state
+  description = "The IAM policies and role that allow read-only access to the cool-images-assessment-images state in the Terraform state bucket."
 }

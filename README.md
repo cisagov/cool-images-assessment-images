@@ -2,38 +2,19 @@
 
 [![GitHub Build Status](https://github.com/cisagov/cool-images-assessment-images/workflows/build/badge.svg)](https://github.com/cisagov/cool-images-assessment-images/actions)
 
-This is a generic skeleton project that can be used to quickly get a
-new [cisagov](https://github.com/cisagov) [Terraform
-module](https://www.terraform.io/docs/modules/index.html) GitHub
-repository started.  This skeleton project contains [licensing
-information](LICENSE), as well as [pre-commit
-hooks](https://pre-commit.com) and
-[GitHub Actions](https://github.com/features/actions) configurations
-appropriate for the major languages that we use.
+Terraform code to create roles related to the creation of and access to buckets
+to house assessment images in the Images (Production) and Images (Staging)
+accounts in the COOL.
 
-See [here](https://www.terraform.io/docs/modules/index.html) for more
-details on Terraform modules and the standard module structure.
+## Pre-requisites ##
 
-## Usage ##
-
-```hcl
-module "example" {
-  source = "github.com/cisagov/cool-images-assessment-images"
-
-  aws_region            = "us-west-1"
-  aws_availability_zone = "b"
-  subnet_id             = "subnet-0123456789abcdef0"
-
-  tags = {
-    Key1 = "Value1"
-    Key2 = "Value2"
-  }
-}
-```
-
-## Examples ##
-
-* [Deploying into the default VPC](https://github.com/cisagov/cool-images-assessment-images/tree/develop/examples/default_vpc)
+- [Terraform](https://www.terraform.io/) installed on your system.
+- An accessible AWS S3 bucket to store Terraform state
+  (specified in [backend.tf](backend.tf)).
+- An accessible AWS DynamoDB database to store the Terraform state lock
+  (specified in [backend.tf](backend.tf)).
+- Access to all of the Terraform remote states specified in
+  [remote_states.tf](remote_states.tf).
 
 ## Requirements ##
 
@@ -47,39 +28,35 @@ module "example" {
 | Name | Version |
 |------|---------|
 | aws | ~> 3.0 |
+| aws.images_provisionaccount_production | ~> 3.0 |
+| aws.images_provisionaccount_staging | ~> 3.0 |
+| aws.users_provisionaccount | ~> 3.0 |
+| terraform | n/a |
 
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| ami_owner_account_id | The ID of the AWS account that owns the Example AMI, or "self" if the AMI is owned by the same account as the provisioner. | `string` | `self` | no |
-| aws_availability_zone | The AWS availability zone to deploy into (e.g. a, b, c, etc.) | `string` | `a` | no |
-| aws_region | The AWS region to deploy into (e.g. us-east-1) | `string` | `us-east-1` | no |
-| subnet_id | The ID of the AWS subnet to deploy into (e.g. subnet-0123456789abcdef0) | `string` | n/a | yes |
+| assessment_images_bucket_name | The base name to use for the assessment images S3 buckets. | `string` | `cisa-cool-assessment-images` | no |
+| aws_region | The AWS region where the Images account is to be created (e.g. "us-east-1"). | `string` | `us-east-1` | no |
+| provisionaccount_role_name | The name of the IAM role that allows sufficient permission to provision all AWS resources in the Images account. | `string` | `ProvisionAccount` | no |
+| provisionassessmentimagesbucket_policy_description | The description to associate with the IAM policy that allows provisioning of S3 buckets in the Images account. | `string` | `Allows provisioning of S3 buckets in the Images account.` | no |
+| provisionassessmentimagesbucket_policy_name | The name to assign the IAM policy that allows provisioning of S3 buckets in the Images account. | `string` | `ProvisionBuckets` | no |
+| read_terraform_state_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows read-only access to the cool-images-assessment-images state in the S3 bucket where Terraform state is stored. | `string` | `ReadImagesAssessmentImagesTerraformState` | no |
 | tags | Tags to apply to all AWS resources created | `map(string)` | `{}` | no |
 
 ## Outputs ##
 
 | Name | Description |
 |------|-------------|
-| arn | The EC2 instance ARN |
-| availability_zone | The AZ where the EC2 instance is deployed |
-| id | The EC2 instance ID |
-| private_ip | The private IP of the EC2 instance |
-| subnet_id | The ID of the subnet where the EC2 instance is deployed |
+| assessment_images_bucket_production | The S3 bucket to store assessment images in the Images (Production) account. |
+| assessment_images_bucket_staging | The S3 bucket to store assessment images in the Images (Staging) account. |
+| read_terraform_state | The IAM policies and role that allow read-only access to the cool-images-assessment-images state in the Terraform state bucket. |
 
 ## Notes ##
 
 Running `pre-commit` requires running `terraform init` in every directory that
-contains Terraform code. In this repository, these are the main directory and
-every directory under `examples/`.
-
-## New Repositories from a Skeleton ##
-
-Please see our [Project Setup guide](https://github.com/cisagov/development-guide/tree/develop/project_setup)
-for step-by-step instructions on how to start a new repository from
-a skeleton. This will save you time and effort when configuring a
-new repository!
+contains Terraform code. In this repository, this is only the main directory.
 
 ## Contributing ##
 
