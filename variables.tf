@@ -15,6 +15,18 @@ variable "assessment_images_bucket_name" {
   default     = "cisa-cool-assessment-images"
 }
 
+variable "assessmentimagesbucketfullaccess_role_description" {
+  type        = string
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows full access to the S3 bucket where assessment images are stored."
+  default     = "Allows full access to the S3 bucket where assessment images are stored."
+}
+
+variable "assessmentimagesbucketfullaccess_role_name" {
+  type        = string
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows full access to the S3 bucket where assessment images are stored."
+  default     = "AssessmentImagesBucketFullAccess"
+}
+
 variable "aws_region" {
   type        = string
   description = "The AWS region where the Images account is to be created (e.g. \"us-east-1\")."

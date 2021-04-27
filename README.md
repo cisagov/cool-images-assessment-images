@@ -38,6 +38,8 @@ accounts in the COOL.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | assessment_images_bucket_name | The base name to use for the assessment images S3 buckets. | `string` | `cisa-cool-assessment-images` | no |
+| assessmentimagesbucketfullaccess_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows full access to the S3 bucket where assessment images are stored. | `string` | `Allows full access to the S3 bucket where assessment images are stored.` | no |
+| assessmentimagesbucketfullaccess_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows full access to the S3 bucket where assessment images are stored. | `string` | `AssessmentImagesBucketFullAccess` | no |
 | aws_region | The AWS region where the Images account is to be created (e.g. "us-east-1"). | `string` | `us-east-1` | no |
 | provisionaccount_role_name | The name of the IAM role that allows sufficient permission to provision all AWS resources in the Images account. | `string` | `ProvisionAccount` | no |
 | provisionassessmentimagesbucket_policy_description | The description to associate with the IAM policy that allows provisioning of S3 buckets in the Images account. | `string` | `Allows provisioning of S3 buckets in the Images account.` | no |
@@ -51,6 +53,8 @@ accounts in the COOL.
 |------|-------------|
 | assessment_images_bucket_production | The S3 bucket to store assessment images in the Images (Production) account. |
 | assessment_images_bucket_staging | The S3 bucket to store assessment images in the Images (Staging) account. |
+| assessmentimagesbucketfullaccess_role_production | The IAM role that allows full access to the assessment images bucket in the Images (Production) account. |
+| assessmentimagesbucketfullaccess_role_staging | The IAM role that allows full access to the assessment images bucket in the Images (Staging) account. |
 | read_terraform_state | The IAM policies and role that allow read-only access to the cool-images-assessment-images state in the Terraform state bucket. |
 
 ## Notes ##
