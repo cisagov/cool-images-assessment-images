@@ -9,7 +9,7 @@ resource "aws_iam_role" "assessmentimagesbucketfullaccess_role_production" {
   assume_role_policy = data.aws_iam_policy_document.assume_role_doc.json
   description        = var.assessmentimagesbucketfullaccess_role_description
   name               = var.assessmentimagesbucketfullaccess_role_name
-  tags               = var.tags
+  tags               = merge(var.tags, { "Workspace" = "production" })
 }
 
 resource "aws_iam_role_policy_attachment" "assessmentimagesbucketfullaccess_policy_attachment_production" {
@@ -25,7 +25,7 @@ resource "aws_iam_role" "assessmentimagesbucketfullaccess_role_staging" {
   assume_role_policy = data.aws_iam_policy_document.assume_role_doc.json
   description        = var.assessmentimagesbucketfullaccess_role_description
   name               = var.assessmentimagesbucketfullaccess_role_name
-  tags               = var.tags
+  tags               = merge(var.tags, { "Workspace" = "staging" })
 }
 
 resource "aws_iam_role_policy_attachment" "assessmentimagesbucketfullaccess_policy_attachment_staging" {

@@ -43,7 +43,6 @@ resource "aws_iam_policy" "assume_bucket_role_policy" {
   description = var.assume_bucket_role_policy_description
   name        = local.assume_bucket_role_policy_name
   policy      = data.aws_iam_policy_document.assume_bucket_role_doc.json
-  tags        = var.tags
 }
 
 # The IAM policy that allows assumption of the AssessmentImagesBucketFullAccess

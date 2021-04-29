@@ -22,7 +22,7 @@ resource "aws_s3_bucket" "assessment_images_production" {
     }
   }
 
-  tags = var.tags
+  tags = merge(var.tags, { "Workspace" = "production" })
 
   versioning {
     enabled = true
@@ -62,7 +62,7 @@ resource "aws_s3_bucket" "assessment_images_staging" {
     }
   }
 
-  tags = var.tags
+  tags = merge(var.tags, { "Workspace" = "staging" })
 
   versioning {
     enabled = true
