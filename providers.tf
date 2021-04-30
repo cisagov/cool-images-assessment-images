@@ -6,7 +6,7 @@ provider "aws" {
 # The provider used to create the role that can be assumed to do
 # everything the CI user needs to do in the production account.
 provider "aws" {
-  alias  = "images_provisionaccount_production"
+  alias  = "images_production"
   region = var.aws_region
   assume_role {
     role_arn     = data.terraform_remote_state.images_production.outputs.provisionaccount_role.arn
@@ -17,7 +17,7 @@ provider "aws" {
 # The provider used to create the role that can be assumed to do
 # everything the CI user needs to do in the staging account.
 provider "aws" {
-  alias  = "images_provisionaccount_staging"
+  alias  = "images_staging"
   region = var.aws_region
   assume_role {
     role_arn     = data.terraform_remote_state.images_staging.outputs.provisionaccount_role.arn
@@ -27,7 +27,7 @@ provider "aws" {
 
 # The provider used to create resources inside the Terraform account.
 provider "aws" {
-  alias  = "terraform_provisionaccount"
+  alias  = "terraform"
   region = var.aws_region
   assume_role {
     role_arn     = data.terraform_remote_state.terraform.outputs.provisionaccount_role.arn
@@ -37,7 +37,7 @@ provider "aws" {
 
 # The provider used to create resources inside the Users account.
 provider "aws" {
-  alias  = "users_provisionaccount"
+  alias  = "users"
   region = var.aws_region
   assume_role {
     role_arn     = data.terraform_remote_state.users.outputs.provisionaccount_role.arn

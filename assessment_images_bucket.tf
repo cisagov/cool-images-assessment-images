@@ -2,7 +2,7 @@
 # Create S3 buckets to store assessment images.
 # ------------------------------------------------------------------------------
 
-resource "aws_s3_bucket" "assessment_images_production" {
+resource "aws_s3_bucket" "production" {
   acl    = "private"
   bucket = local.production_bucket_name
 
@@ -12,7 +12,7 @@ resource "aws_s3_bucket" "assessment_images_production" {
     aws_iam_role_policy_attachment.provisionassessmentimagesbucket_policy_attachment_production
   ]
 
-  provider = aws.images_provisionaccount_production
+  provider = aws.images_production
 
   server_side_encryption_configuration {
     rule {
@@ -31,10 +31,10 @@ resource "aws_s3_bucket" "assessment_images_production" {
 
 # This blocks ANY public access to the bucket or the objects it
 # contains, even if misconfigured to allow public access.
-resource "aws_s3_bucket_public_access_block" "assessment_images_production" {
-  provider = aws.images_provisionaccount_production
+resource "aws_s3_bucket_public_access_block" "production" {
+  provider = aws.images_production
 
-  bucket = aws_s3_bucket.assessment_images_production.id
+  bucket = aws_s3_bucket.production.id
 
   block_public_acls       = true
   block_public_policy     = true
@@ -42,7 +42,7 @@ resource "aws_s3_bucket_public_access_block" "assessment_images_production" {
   restrict_public_buckets = true
 }
 
-resource "aws_s3_bucket" "assessment_images_staging" {
+resource "aws_s3_bucket" "staging" {
   acl    = "private"
   bucket = local.staging_bucket_name
 
@@ -52,7 +52,7 @@ resource "aws_s3_bucket" "assessment_images_staging" {
     aws_iam_role_policy_attachment.provisionassessmentimagesbucket_policy_attachment_staging
   ]
 
-  provider = aws.images_provisionaccount_staging
+  provider = aws.images_staging
 
   server_side_encryption_configuration {
     rule {
@@ -71,10 +71,10 @@ resource "aws_s3_bucket" "assessment_images_staging" {
 
 # This blocks ANY public access to the bucket or the objects it
 # contains, even if misconfigured to allow public access.
-resource "aws_s3_bucket_public_access_block" "assessment_images_staging" {
-  provider = aws.images_provisionaccount_staging
+resource "aws_s3_bucket_public_access_block" "staging" {
+  provider = aws.images_staging
 
-  bucket = aws_s3_bucket.assessment_images_staging.id
+  bucket = aws_s3_bucket.staging.id
 
   block_public_acls       = true
   block_public_policy     = true

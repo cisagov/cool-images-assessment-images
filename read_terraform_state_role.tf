@@ -8,8 +8,8 @@ module "read_terraform_state" {
   source = "github.com/cisagov/terraform-state-read-role-tf-module"
 
   providers = {
-    aws       = aws.terraform_provisionaccount
-    aws.users = aws.users_provisionaccount
+    aws       = aws.terraform
+    aws.users = aws.users
   }
 
   account_ids = [local.users_account_id]

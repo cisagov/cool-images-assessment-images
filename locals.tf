@@ -9,7 +9,7 @@ data "aws_caller_identity" "current" {}
 # get the account ID associated with the Users account.
 # ------------------------------------------------------------------------------
 data "aws_caller_identity" "users" {
-  provider = aws.users_provisionaccount
+  provider = aws.users
 }
 
 # ------------------------------------------------------------------------------

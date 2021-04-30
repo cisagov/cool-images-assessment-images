@@ -3,7 +3,7 @@
 # in the Images (Production) and Images (Staging) accounts.
 # ------------------------------------------------------------------------------
 
-data "aws_iam_policy_document" "provisionassessmentimagesbucket_policy_production_doc" {
+data "aws_iam_policy_document" "provision_buckets_production" {
   statement {
     actions = [
       "s3:*",
@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "provisionassessmentimagesbucket_policy_productio
   }
 }
 
-data "aws_iam_policy_document" "provisionassessmentimagesbucket_policy_staging_doc" {
+data "aws_iam_policy_document" "provision_buckets_staging" {
   statement {
     actions = [
       "s3:*",
@@ -27,18 +27,18 @@ data "aws_iam_policy_document" "provisionassessmentimagesbucket_policy_staging_d
   }
 }
 
-resource "aws_iam_policy" "provisionassessmentimagesbucket_policy_production" {
-  provider = aws.images_provisionaccount_production
+resource "aws_iam_policy" "provision_buckets_production" {
+  provider = aws.images_production
 
   description = var.provisionassessmentimagesbucket_policy_description
   name        = var.provisionassessmentimagesbucket_policy_name
-  policy      = data.aws_iam_policy_document.provisionassessmentimagesbucket_policy_production_doc.json
+  policy      = data.aws_iam_policy_document.provision_buckets_production.json
 }
 
-resource "aws_iam_policy" "provisionassessmentimagesbucket_policy_staging" {
-  provider = aws.images_provisionaccount_staging
+resource "aws_iam_policy" "provision_buckets_staging" {
+  provider = aws.images_staging
 
   description = var.provisionassessmentimagesbucket_policy_description
   name        = var.provisionassessmentimagesbucket_policy_name
-  policy      = data.aws_iam_policy_document.provisionassessmentimagesbucket_policy_staging_doc.json
+  policy      = data.aws_iam_policy_document.provision_buckets_staging.json
 }

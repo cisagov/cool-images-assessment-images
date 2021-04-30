@@ -4,16 +4,16 @@
 # accounts.
 # ------------------------------------------------------------------------------
 
-resource "aws_iam_role_policy_attachment" "provisionassessmentimagesbucket_policy_attachment_production" {
-  provider = aws.images_provisionaccount_production
+resource "aws_iam_role_policy_attachment" "provision_buckets_production" {
+  provider = aws.images_production
 
-  policy_arn = aws_iam_policy.provisionassessmentimagesbucket_policy_production.arn
+  policy_arn = aws_iam_policy.provision_buckets_production.arn
   role       = var.provisionaccount_role_name
 }
 
-resource "aws_iam_role_policy_attachment" "provisionassessmentimagesbucket_policy_attachment_staging" {
-  provider = aws.images_provisionaccount_staging
+resource "aws_iam_role_policy_attachment" "provision_buckets_staging" {
+  provider = aws.images_staging
 
-  policy_arn = aws_iam_policy.provisionassessmentimagesbucket_policy_staging.arn
+  policy_arn = aws_iam_policy.provision_buckets_staging.arn
   role       = var.provisionaccount_role_name
 }
