@@ -71,6 +71,6 @@ variable "tags" {
 
 variable "user_name" {
   type        = string
-  description = "The name of the user to create in the Users account which will have the attacged policy to assume roles allowing access to the assessment images buckets in the Images (Production) and Images (Staging) accounts."
+  description = "The name of the user to create in the Users account which will have the attached policy to assume roles allowing access to the assessment images buckets in the Images (Production) and Images (Staging) accounts."
   default     = "assessment-images-bucket-full-access"
 }

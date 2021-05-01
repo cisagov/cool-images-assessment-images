@@ -9,7 +9,7 @@ resource "aws_s3_bucket" "production" {
   # Until this policy attachment happens, we don't have permission
   # to provision the bucket.
   depends_on = [
-    aws_iam_role_policy_attachment.provisionassessmentimagesbucket_policy_attachment_production
+    aws_iam_role_policy_attachment.provision_bucket_production
   ]
 
   provider = aws.images_production
@@ -49,7 +49,7 @@ resource "aws_s3_bucket" "staging" {
   # Until this policy attachment happens, we don't have permission
   # to provision the bucket.
   depends_on = [
-    aws_iam_role_policy_attachment.provisionassessmentimagesbucket_policy_attachment_staging
+    aws_iam_role_policy_attachment.provision_bucket_staging
   ]
 
   provider = aws.images_staging
