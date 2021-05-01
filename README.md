@@ -78,17 +78,17 @@ accounts in the COOL.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| assessment\_images\_bucket\_name | The base name to use for the assessment images S3 buckets. | `string` | `"cisa-cool-assessment-images"` | no |
-| assessmentimagesbucketfullaccess\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows full access to the S3 bucket where assessment images are stored. | `string` | `"Allows full access to the S3 bucket where assessment images are stored."` | no |
-| assessmentimagesbucketfullaccess\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows full access to the S3 bucket where assessment images are stored. | `string` | `"AssessmentImagesBucketFullAccess"` | no |
-| assume\_bucket\_role\_policy\_description | The description to associate with the IAM policy that allows the user in the Users account to assume the IAM role that allows access to the assessment images buckets in the Images (Production) and Images (Staging) accounts. | `string` | `"Allows assumption of the roles in the Images (Production) and Images (Staging) accounts that allows full access to the assessment images buckets."` | no |
-| aws\_region | The AWS region where the Images account is to be created (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
-| provisionaccount\_role\_name | The name of the IAM role that allows sufficient permission to provision all AWS resources in the Images account. | `string` | `"ProvisionAccount"` | no |
-| provisionassessmentimagesbucket\_policy\_description | The description to associate with the IAM policy that allows provisioning of S3 buckets in the Images account. | `string` | `"Allows provisioning of S3 buckets in the Images account."` | no |
-| provisionassessmentimagesbucket\_policy\_name | The name to assign the IAM policy that allows provisioning of S3 buckets in the Images account. | `string` | `"ProvisionBuckets"` | no |
-| read\_terraform\_state\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows read-only access to the cool-images-assessment-images state in the S3 bucket where Terraform state is stored. | `string` | `"ReadImagesAssessmentImagesTerraformState"` | no |
+| assessment\_images\_bucket\_base\_name | The base name to use for the assessment images S3 buckets. | `string` | `"cisa-cool-assessment-images"` | no |
+| assessmentimagesbucketfullaccess\_role\_description | The description to associate with the IAM role and attached policy that allows full access to the assessment images S3 bucket. | `string` | `"Allows full access to the S3 bucket where assessment images are stored."` | no |
+| assessmentimagesbucketfullaccess\_role\_name | The name to associate with the IAM role and attached policy that allows full access to the assessment images S3 bucket. | `string` | `"AssessmentImagesBucketFullAccess"` | no |
+| assume\_assessmentimagesbucketfullaccess\_roles\_policy\_description | The description to associate with the IAM policy that allows a user to assume the IAM roles that allow access to the assessment images S3 bucket in the Images (Production) and Images (Staging) accounts. | `string` | `"Allows assumption of the roles in the Images (Production) and Images (Staging) accounts that allow full access to the assessment images S3 bucket."` | no |
+| aws\_region | The AWS region to use for the account provisioners (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
+| provisionaccount\_role\_name | The name of the IAM role that allows sufficient permissions to provision all AWS resources in the account. | `string` | `"ProvisionAccount"` | no |
+| provisionassessmentimagesbucket\_policy\_description | The description to associate with the IAM policy that allows provisioning of the assessment images S3 Bucket in the Images account. | `string` | `"Allows provisioning of assessment images S3 resources in the Images account."` | no |
+| provisionassessmentimagesbucket\_policy\_name | The name to associate with the IAM policy that allows provisioning of the assessment images S3 Bucket in the Images account. | `string` | `"ProvisionAssessmentImagesBucket"` | no |
+| read\_terraform\_state\_role\_name | The name to associate with the IAM role and attached policy that allows read-only access to the cool-images-assessment-images state in the S3 bucket where Terraform state is stored. | `string` | `"ReadImagesAssessmentImagesTerraformState"` | no |
 | tags | Tags to apply to all AWS resources created | `map(string)` | `{}` | no |
-| user\_name | The name of the user to create in the Users account which will have the policy to assume roles allowing access to the assessment images buckets in the Images (Production) and Images (Staging) accounts attached. | `string` | `"assessment-images-bucket-full-access"` | no |
+| user\_name | The name of the user to create in the Users account which will have the attacged policy to assume roles allowing access to the assessment images buckets in the Images (Production) and Images (Staging) accounts. | `string` | `"assessment-images-bucket-full-access"` | no |
 
 ## Outputs ##
 
@@ -98,9 +98,9 @@ accounts in the COOL.
 | assessment\_images\_bucket\_staging | The S3 bucket to store assessment images in the Images (Staging) account. |
 | assessmentimagesbucketfullaccess\_role\_production | The IAM role that allows full access to the assessment images bucket in the Images (Production) account. |
 | assessmentimagesbucketfullaccess\_role\_staging | The IAM role that allows full access to the assessment images bucket in the Images (Staging) account. |
-| assume\_bucket\_fullaccess\_roles\_policy | The IAM policy that allows the user in the Users account to assume the IAM roles that allow access to the assessment images buckets in the Images (Production) and Images (Staging) accounts. |
+| assume\_bucket\_fullaccess\_roles\_policy | The IAM policy that allows assumption of the IAM roles that allow full access to the assessment images bucket in the Images (Production) and Images (Staging) accounts. |
 | bucket\_user | The user in the Users account with full access permissions to the assessment images buckets in the Images (Production) and Images (Staging) accounts. |
-| bucket\_user\_access\_key | The access key associated with the assessment images buckets user. |
+| bucket\_user\_access\_key | The access key associated with the assessment images user. |
 | read\_terraform\_state | The IAM policies and role that allow read-only access to the cool-images-assessment-images state in the Terraform state bucket. |
 
 ## Notes ##

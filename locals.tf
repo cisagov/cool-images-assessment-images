@@ -22,11 +22,11 @@ locals {
 
   # Format the base bucket name into the name to use in the Images (Production)
   # account.
-  production_bucket_name = format("%s-production", var.assessment_images_bucket_name)
+  production_bucket_name = format("%s-production", var.assessment_images_bucket_base_name)
 
   # Format the base bucket name into the name to use in the Images (Staging)
   # account.
-  staging_bucket_name = format("%s-staging", var.assessment_images_bucket_name)
+  staging_bucket_name = format("%s-staging", var.assessment_images_bucket_base_name)
 
   # Name for the role that will allow the user in the Users account to assume the
   # roles that provide access to the assessment images buckets.

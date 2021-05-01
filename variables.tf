@@ -9,7 +9,7 @@
 #
 # These parameters have reasonable defaults.
 # ------------------------------------------------------------------------------
-variable "assessment_images_bucket_name" {
+variable "assessment_images_bucket_base_name" {
   type        = string
   description = "The base name to use for the assessment images S3 buckets."
   default     = "cisa-cool-assessment-images"
@@ -17,49 +17,49 @@ variable "assessment_images_bucket_name" {
 
 variable "assessmentimagesbucketfullaccess_role_description" {
   type        = string
-  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows full access to the S3 bucket where assessment images are stored."
+  description = "The description to associate with the IAM role and attached policy that allows full access to the assessment images S3 bucket."
   default     = "Allows full access to the S3 bucket where assessment images are stored."
 }
 
 variable "assessmentimagesbucketfullaccess_role_name" {
   type        = string
-  description = "The name to assign the IAM role (as well as the corresponding policy) that allows full access to the S3 bucket where assessment images are stored."
+  description = "The name to associate with the IAM role and attached policy that allows full access to the assessment images S3 bucket."
   default     = "AssessmentImagesBucketFullAccess"
 }
 
-variable "assume_bucket_role_policy_description" {
+variable "assume_assessmentimagesbucketfullaccess_roles_policy_description" {
   type        = string
-  description = "The description to associate with the IAM policy that allows the user in the Users account to assume the IAM role that allows access to the assessment images buckets in the Images (Production) and Images (Staging) accounts."
-  default     = "Allows assumption of the roles in the Images (Production) and Images (Staging) accounts that allows full access to the assessment images buckets."
+  description = "The description to associate with the IAM policy that allows a user to assume the IAM roles that allow access to the assessment images S3 bucket in the Images (Production) and Images (Staging) accounts."
+  default     = "Allows assumption of the roles in the Images (Production) and Images (Staging) accounts that allow full access to the assessment images S3 bucket."
 }
 
 variable "aws_region" {
   type        = string
-  description = "The AWS region where the Images account is to be created (e.g. \"us-east-1\")."
+  description = "The AWS region to use for the account provisioners (e.g. \"us-east-1\")."
   default     = "us-east-1"
 }
 
 variable "provisionaccount_role_name" {
   type        = string
-  description = "The name of the IAM role that allows sufficient permission to provision all AWS resources in the Images account."
+  description = "The name of the IAM role that allows sufficient permissions to provision all AWS resources in the account."
   default     = "ProvisionAccount"
 }
 
 variable "provisionassessmentimagesbucket_policy_description" {
   type        = string
-  description = "The description to associate with the IAM policy that allows provisioning of S3 buckets in the Images account."
-  default     = "Allows provisioning of S3 buckets in the Images account."
+  description = "The description to associate with the IAM policy that allows provisioning of the assessment images S3 Bucket in the Images account."
+  default     = "Allows provisioning of assessment images S3 resources in the Images account."
 }
 
 variable "provisionassessmentimagesbucket_policy_name" {
   type        = string
-  description = "The name to assign the IAM policy that allows provisioning of S3 buckets in the Images account."
-  default     = "ProvisionBuckets"
+  description = "The name to associate with the IAM policy that allows provisioning of the assessment images S3 Bucket in the Images account."
+  default     = "ProvisionAssessmentImagesBucket"
 }
 
 variable "read_terraform_state_role_name" {
   type        = string
-  description = "The name to assign the IAM role (as well as the corresponding policy) that allows read-only access to the cool-images-assessment-images state in the S3 bucket where Terraform state is stored."
+  description = "The name to associate with the IAM role and attached policy that allows read-only access to the cool-images-assessment-images state in the S3 bucket where Terraform state is stored."
   default     = "ReadImagesAssessmentImagesTerraformState"
 }
 
@@ -71,6 +71,6 @@ variable "tags" {
 
 variable "user_name" {
   type        = string
-  description = "The name of the user to create in the Users account which will have the policy to assume roles allowing access to the assessment images buckets in the Images (Production) and Images (Staging) accounts attached."
+  description = "The name of the user to create in the Users account which will have the attacged policy to assume roles allowing access to the assessment images buckets in the Images (Production) and Images (Staging) accounts."
   default     = "assessment-images-bucket-full-access"
 }

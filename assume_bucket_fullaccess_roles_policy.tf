@@ -40,7 +40,7 @@ data "aws_iam_policy_document" "assume_bucket_fullaccess_roles" {
 resource "aws_iam_policy" "assume_bucket_fullaccess_roles" {
   provider = aws.users
 
-  description = var.assume_bucket_role_policy_description
+  description = var.assume_assessmentimagesbucketfullaccess_roles_policy_description
   name        = local.assume_bucket_role_policy_name
   policy      = data.aws_iam_policy_document.assume_bucket_fullaccess_roles.json
 }

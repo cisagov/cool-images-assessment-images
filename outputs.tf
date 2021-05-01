@@ -20,12 +20,12 @@ output "assessmentimagesbucketfullaccess_role_staging" {
 
 output "assume_bucket_fullaccess_roles_policy" {
   value       = aws_iam_policy.assume_bucket_fullaccess_roles
-  description = "The IAM policy that allows the user in the Users account to assume the IAM roles that allow access to the assessment images buckets in the Images (Production) and Images (Staging) accounts."
+  description = "The IAM policy that allows assumption of the IAM roles that allow full access to the assessment images bucket in the Images (Production) and Images (Staging) accounts."
 }
 
 output "bucket_user_access_key" {
   value       = aws_iam_access_key.key
-  description = "The access key associated with the assessment images buckets user."
+  description = "The access key associated with the assessment images user."
   sensitive   = true
 }
 
