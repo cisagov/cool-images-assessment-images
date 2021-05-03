@@ -3,16 +3,15 @@
 # ------------------------------------------------------------------------------
 
 resource "aws_s3_bucket" "production" {
-  acl    = "private"
-  bucket = local.production_bucket_name
-
+  provider = aws.images_production
   # Until this policy attachment happens, we don't have permission
   # to provision the bucket.
   depends_on = [
     aws_iam_role_policy_attachment.provision_bucket_production
   ]
 
-  provider = aws.images_production
+  acl    = "private"
+  bucket = local.production_bucket_name
 
   server_side_encryption_configuration {
     rule {
@@ -43,16 +42,15 @@ resource "aws_s3_bucket_public_access_block" "production" {
 }
 
 resource "aws_s3_bucket" "staging" {
-  acl    = "private"
-  bucket = local.staging_bucket_name
-
+  provider = aws.images_staging
   # Until this policy attachment happens, we don't have permission
   # to provision the bucket.
   depends_on = [
     aws_iam_role_policy_attachment.provision_bucket_staging
   ]
 
-  provider = aws.images_staging
+  acl    = "private"
+  bucket = local.staging_bucket_name
 
   server_side_encryption_configuration {
     rule {
