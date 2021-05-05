@@ -47,13 +47,13 @@ variable "provisionaccount_role_name" {
 
 variable "provisionassessmentimagesbucket_policy_description" {
   type        = string
-  description = "The description to associate with the IAM policy that allows provisioning of the assessment images S3 Bucket in the Images account."
+  description = "The description to associate with the IAM policy that allows provisioning of the assessment images S3 bucket in the Images account."
   default     = "Allows provisioning of assessment images S3 resources in the Images account."
 }
 
 variable "provisionassessmentimagesbucket_policy_name" {
   type        = string
-  description = "The name to associate with the IAM policy that allows provisioning of the assessment images S3 Bucket in the Images account."
+  description = "The name to associate with the IAM policy that allows provisioning of the assessment images S3 bucket in the Images account."
   default     = "ProvisionAssessmentImagesBucket"
 }
 

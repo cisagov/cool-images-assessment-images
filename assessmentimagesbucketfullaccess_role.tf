@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Create the IAM role that allows full access to the assessment images
+# Create the IAM roles that allow full access to the assessment images
 # buckets in the Images (Production) and Images (Staging) accounts.
 # ------------------------------------------------------------------------------
 

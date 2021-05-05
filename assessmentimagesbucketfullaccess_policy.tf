@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Create the IAM policies that allows full access to the assessment images
+# Create the IAM policies that allow full access to the assessment images
 # buckets in the Images (Production) and Images (Staging) accounts.
 # ------------------------------------------------------------------------------
 
