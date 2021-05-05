@@ -3,8 +3,8 @@ provider "aws" {
   region = var.aws_region
 }
 
-# The provider used to create the role that can be assumed to do
-# everything the CI user needs to do in the production account.
+# The provider used to create the role that can be assumed to do everything
+# needed in the Images (Production) account.
 provider "aws" {
   alias  = "images_production"
   region = var.aws_region
@@ -14,8 +14,8 @@ provider "aws" {
   }
 }
 
-# The provider used to create the role that can be assumed to do
-# everything the CI user needs to do in the staging account.
+# The provider used to create the role that can be assumed to do everything
+# needed in the Images (Staging) account.
 provider "aws" {
   alias  = "images_staging"
   region = var.aws_region

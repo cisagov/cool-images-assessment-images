@@ -11,7 +11,7 @@
 # ------------------------------------------------------------------------------
 variable "assessment_images_bucket_base_name" {
   type        = string
-  description = "The base name to use for the assessment images S3 buckets."
+  description = "The base name to use for the assessment images S3 buckets. This value will be appended with \"-production\" or \"-staging\" to create the appropriate full bucket name (e.g. With the default value \"cisa-cool-assessment-images-production\" will be used for the bucket in the Images (Production) account)."
   default     = "cisa-cool-assessment-images"
 }
 
@@ -71,6 +71,6 @@ variable "tags" {
 
 variable "user_name" {
   type        = string
-  description = "The name of the user to create in the Users account which will have the attached policy to assume roles allowing access to the assessment images buckets in the Images (Production) and Images (Staging) accounts."
+  description = "The name of the user to create in the Users account that can assume the roles allowing access to the assessment images S3 buckets in the Images (Production) and Images (Staging) accounts."
   default     = "assessment-images-bucket-full-access"
 }
