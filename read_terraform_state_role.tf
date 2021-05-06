@@ -22,5 +22,5 @@ module "read_terraform_state" {
   # production or vice versa, which is highly annoying.
   role_tags                   = { for k, v in var.tags : k => v if k != "Workspace" }
   terraform_state_bucket_name = "cisa-cool-terraform-state"
-  terraform_state_path        = "cool-images-assessment-images/*.tfstate"
+  terraform_state_path        = "cool-images-assessment-images/terraform.tfstate"
 }
