@@ -8,12 +8,12 @@ resource "aws_iam_role_policy_attachment" "provision_bucket_production" {
   provider = aws.images_production
 
   policy_arn = aws_iam_policy.provision_bucket_production.arn
-  role       = var.provisionaccount_role_name
+  role       = data.terraform_remote_state.images_production.outputs.provisionaccount_role.name
 }
 
 resource "aws_iam_role_policy_attachment" "provision_bucket_staging" {
   provider = aws.images_staging
 
   policy_arn = aws_iam_policy.provision_bucket_staging.arn
-  role       = var.provisionaccount_role_name
+  role       = data.terraform_remote_state.images_staging.outputs.provisionaccount_role.name
 }

@@ -39,12 +39,6 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "provisionaccount_role_name" {
-  type        = string
-  description = "The name of the IAM role that allows sufficient permissions to provision all AWS resources in the account."
-  default     = "ProvisionAccount"
-}
-
 variable "provisionassessmentimagesbucket_policy_description" {
   type        = string
   description = "The description to associate with the IAM policy that allows provisioning of the assessment images S3 bucket in the Images account."
