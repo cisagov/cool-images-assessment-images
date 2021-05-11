@@ -15,6 +15,13 @@ accounts in the COOL.
   (specified in [backend.tf](backend.tf)).
 - Access to all of the Terraform remote states specified in
   [remote_states.tf](remote_states.tf).
+- The following COOL accounts and roles must have been created:
+  - Images (Production and Staging):
+    [`cisagov/cool-accounts/images`](https://github.com/cisagov/cool-accounts/tree/develop/images)
+  - Terraform:
+    [`cisagov/cool-accounts/terraform`](https://github.com/cisagov/cool-accounts/tree/develop/terraform)
+  - Users:
+    [`cisagov/cool-accounts/users`](https://github.com/cisagov/cool-accounts/tree/develop/users)
 
 ## Requirements ##
 
