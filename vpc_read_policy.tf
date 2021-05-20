@@ -15,10 +15,10 @@ data "aws_iam_policy_document" "vpcreadaccess_policy_production" {
 
     condition {
       test     = "StringEquals"
-      variable = "aws:SourceVpc"
+      variable = "aws:SourceVpce"
 
       values = [
-        data.terraform_remote_state.sharedservices_networking_production.outputs.vpc.id,
+        data.terraform_remote_state.sharedservices_networking_production.outputs.vpc_endpoint_s3.id,
       ]
     }
   }
@@ -33,10 +33,10 @@ data "aws_iam_policy_document" "vpcreadaccess_policy_production" {
 
     condition {
       test     = "StringEquals"
-      variable = "aws:SourceVpc"
+      variable = "aws:SourceVpce"
 
       values = [
-        data.terraform_remote_state.sharedservices_networking_production.outputs.vpc.id,
+        data.terraform_remote_state.sharedservices_networking_production.outputs.vpc_endpoint_s3.id,
       ]
     }
   }
@@ -53,10 +53,10 @@ data "aws_iam_policy_document" "vpcreadaccess_policy_staging" {
 
     condition {
       test     = "StringEquals"
-      variable = "aws:SourceVpc"
+      variable = "aws:SourceVpce"
 
       values = [
-        data.terraform_remote_state.sharedservices_networking_staging.outputs.vpc.id,
+        data.terraform_remote_state.sharedservices_networking_staging.outputs.vpc_endpoint_s3.id,
       ]
     }
   }
@@ -71,10 +71,10 @@ data "aws_iam_policy_document" "vpcreadaccess_policy_staging" {
 
     condition {
       test     = "StringEquals"
-      variable = "aws:SourceVpc"
+      variable = "aws:SourceVpce"
 
       values = [
-        data.terraform_remote_state.sharedservices_networking_staging.outputs.vpc.id,
+        data.terraform_remote_state.sharedservices_networking_staging.outputs.vpc_endpoint_s3.id,
       ]
     }
   }
