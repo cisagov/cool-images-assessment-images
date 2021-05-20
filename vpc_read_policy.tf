@@ -21,6 +21,13 @@ data "aws_iam_policy_document" "vpcreadaccess_policy_production" {
         data.terraform_remote_state.sharedservices_networking_production.outputs.vpc_endpoint_s3.id,
       ]
     }
+
+    principals {
+      type = "AWS"
+      identifiers = [
+        "*",
+      ]
+    }
   }
 
   statement {
@@ -37,6 +44,13 @@ data "aws_iam_policy_document" "vpcreadaccess_policy_production" {
 
       values = [
         data.terraform_remote_state.sharedservices_networking_production.outputs.vpc_endpoint_s3.id,
+      ]
+    }
+
+    principals {
+      type = "AWS"
+      identifiers = [
+        "*",
       ]
     }
   }
@@ -59,6 +73,13 @@ data "aws_iam_policy_document" "vpcreadaccess_policy_staging" {
         data.terraform_remote_state.sharedservices_networking_staging.outputs.vpc_endpoint_s3.id,
       ]
     }
+
+    principals {
+      type = "AWS"
+      identifiers = [
+        "*",
+      ]
+    }
   }
 
   statement {
@@ -75,6 +96,13 @@ data "aws_iam_policy_document" "vpcreadaccess_policy_staging" {
 
       values = [
         data.terraform_remote_state.sharedservices_networking_staging.outputs.vpc_endpoint_s3.id,
+      ]
+    }
+
+    principals {
+      type = "AWS"
+      identifiers = [
+        "*",
       ]
     }
   }
