@@ -7,7 +7,6 @@ resource "aws_iam_user" "user" {
   provider = aws.users
 
   name = var.user_name
-  tags = var.tags
 }
 
 # The IAM access key for the user
