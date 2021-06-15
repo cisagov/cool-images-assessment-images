@@ -21,7 +21,7 @@ resource "aws_s3_bucket" "production" {
     }
   }
 
-  tags = merge(var.tags, { "Workspace" = "production" })
+  tags = { "Workspace" = "production" }
 
   versioning {
     enabled = true
@@ -60,7 +60,7 @@ resource "aws_s3_bucket" "staging" {
     }
   }
 
-  tags = merge(var.tags, { "Workspace" = "staging" })
+  tags = { "Workspace" = "staging" }
 
   versioning {
     enabled = true

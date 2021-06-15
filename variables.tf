@@ -59,7 +59,7 @@ variable "read_terraform_state_role_name" {
 
 variable "tags" {
   type        = map(string)
-  description = "Tags to apply to all AWS resources created"
+  description = "Tags to apply to all AWS resources created."
   default     = {}
 }
 
