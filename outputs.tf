@@ -23,17 +23,6 @@ output "assume_bucket_fullaccess_roles_policy" {
   description = "The IAM policy that allows assumption of the IAM roles that allow full access to the assessment images bucket in the Images (Production) and Images (Staging) accounts."
 }
 
-output "bucket_user_access_key" {
-  value       = aws_iam_access_key.key
-  description = "The access key associated with the assessment images user."
-  sensitive   = true
-}
-
-output "bucket_user" {
-  value       = aws_iam_user.user
-  description = "The user in the Users account with full access permissions to the assessment images buckets in the Images (Production) and Images (Staging) accounts."
-}
-
 output "read_terraform_state" {
   value       = module.read_terraform_state
   description = "The IAM policies and role that allow read-only access to the cool-images-assessment-images state in the Terraform state bucket."

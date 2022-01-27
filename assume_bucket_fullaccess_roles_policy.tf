@@ -44,12 +44,3 @@ resource "aws_iam_policy" "assume_bucket_fullaccess_roles" {
   name        = local.assume_bucket_role_policy_name
   policy      = data.aws_iam_policy_document.assume_bucket_fullaccess_roles.json
 }
-
-# The IAM policy that allows assumption of the AssessmentImagesBucketFullAccess
-# role in the Images (Production) account.
-resource "aws_iam_user_policy_attachment" "assume_bucket_fullaccess_roles" {
-  provider = aws.users
-
-  policy_arn = aws_iam_policy.assume_bucket_fullaccess_roles.arn
-  user       = aws_iam_user.user.name
-}

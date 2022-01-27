@@ -62,9 +62,3 @@ variable "tags" {
   description = "Tags to apply to all AWS resources created."
   default     = {}
 }
-
-variable "user_name" {
-  type        = string
-  description = "The name of the user to create in the Users account that can assume the roles allowing access to the assessment images S3 buckets in the Images (Production) and Images (Staging) accounts."
-  default     = "assessment-images-bucket-full-access"
-}
