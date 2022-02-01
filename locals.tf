@@ -28,10 +28,6 @@ locals {
   # account.
   staging_bucket_name = format("%s-staging", var.assessment_images_bucket_base_name)
 
-  # Name for the role that will allow the user in the Users account to assume the
-  # roles that provide access to the assessment images buckets.
-  assume_bucket_role_policy_name = "Images-${var.assessmentimagesbucketfullaccess_role_name}"
-
   # The account ID for the Users account
   users_account_id = data.aws_caller_identity.users.account_id
 }

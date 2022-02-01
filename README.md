@@ -50,7 +50,6 @@ accounts in the COOL.
 
 | Name | Type |
 |------|------|
-| [aws_iam_policy.assume_bucket_fullaccess_roles](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.fullaccess_policy_production](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.fullaccess_policy_staging](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.provision_bucket_production](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
@@ -71,7 +70,6 @@ accounts in the COOL.
 | [aws_s3_bucket_public_access_block.staging](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_caller_identity.users](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
-| [aws_iam_policy_document.assume_bucket_fullaccess_roles](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.assume_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.fullaccess_policy_production](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.fullaccess_policy_staging](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
@@ -93,7 +91,6 @@ accounts in the COOL.
 | assessment\_images\_bucket\_base\_name | The base name to use for the assessment images S3 buckets. This value will be appended with "-production" or "-staging" to create the appropriate full bucket name (e.g. With the default value "cisa-cool-assessment-images-production" will be used for the bucket in the Images (Production) account). | `string` | `"cisa-cool-assessment-images"` | no |
 | assessmentimagesbucketfullaccess\_role\_description | The description to associate with the IAM role and attached policy that allows full access to the assessment images S3 bucket. | `string` | `"Allows full access to the S3 bucket where assessment images are stored."` | no |
 | assessmentimagesbucketfullaccess\_role\_name | The name to associate with the IAM role and attached policy that allows full access to the assessment images S3 bucket. | `string` | `"AssessmentImagesBucketFullAccess"` | no |
-| assume\_assessmentimagesbucketfullaccess\_roles\_policy\_description | The description to associate with the IAM policy that allows a user to assume the IAM roles that allow access to the assessment images S3 bucket in the Images (Production) and Images (Staging) accounts. | `string` | `"Allows assumption of the roles in the Images (Production) and Images (Staging) accounts that allow full access to the assessment images S3 bucket."` | no |
 | aws\_region | The AWS region to use for the account provisioners (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
 | provisionassessmentimagesbucket\_policy\_description | The description to associate with the IAM policy that allows provisioning of the assessment images S3 bucket in the Images account. | `string` | `"Allows provisioning of assessment images S3 resources in the Images account."` | no |
 | provisionassessmentimagesbucket\_policy\_name | The name to associate with the IAM policy that allows provisioning of the assessment images S3 bucket in the Images account. | `string` | `"ProvisionAssessmentImagesBucket"` | no |
@@ -108,7 +105,6 @@ accounts in the COOL.
 | assessment\_images\_bucket\_staging | The S3 bucket to store assessment images in the Images (Staging) account. |
 | assessmentimagesbucketfullaccess\_role\_production | The IAM role that allows full access to the assessment images bucket in the Images (Production) account. |
 | assessmentimagesbucketfullaccess\_role\_staging | The IAM role that allows full access to the assessment images bucket in the Images (Staging) account. |
-| assume\_bucket\_fullaccess\_roles\_policy | The IAM policy that allows assumption of the IAM roles that allow full access to the assessment images bucket in the Images (Production) and Images (Staging) accounts. |
 | read\_terraform\_state | The IAM policies and role that allow read-only access to the cool-images-assessment-images state in the Terraform state bucket. |
 
 ## Notes ##
