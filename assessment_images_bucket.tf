@@ -41,6 +41,19 @@ resource "aws_s3_bucket_public_access_block" "production" {
   restrict_public_buckets = true
 }
 
+# This ensures every object in the bucket is owned by the bucket owner. This
+# also disables access control lists (ACLs) and only allows access through
+# policies (such as IAM policies).
+resource "aws_s3_bucket_ownership_controls" "production" {
+  provider = aws.images_production
+
+  bucket = aws_s3_bucket.production.id
+
+  rule {
+    object_ownership = "BucketOwnerEnforced"
+  }
+}
+
 resource "aws_s3_bucket" "staging" {
   provider = aws.images_staging
   # Until this policy attachment happens, we don't have permission
@@ -78,4 +91,17 @@ resource "aws_s3_bucket_public_access_block" "staging" {
   block_public_policy     = true
   ignore_public_acls      = true
   restrict_public_buckets = true
+}
+
+# This ensures every object in the bucket is owned by the bucket owner. This
+# also disables access control lists (ACLs) and only allows access through
+# policies (such as IAM policies).
+resource "aws_s3_bucket_ownership_controls" "staging" {
+  provider = aws.images_staging
+
+  bucket = aws_s3_bucket.staging.id
+
+  rule {
+    object_ownership = "BucketOwnerEnforced"
+  }
 }
