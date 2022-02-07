@@ -7,6 +7,7 @@ data "aws_iam_policy_document" "fullaccess_policy_production" {
   statement {
     actions = [
       "s3:ListBucket",
+      "s3:ListBucketVersions",
     ]
     resources = [
       aws_s3_bucket.production.arn
@@ -19,6 +20,7 @@ data "aws_iam_policy_document" "fullaccess_policy_production" {
       "s3:DeleteObjectTagging",
       "s3:GetObject",
       "s3:GetObjectTagging",
+      "s3:GetObjectVersion",
       "s3:PutObject",
       "s3:PutObjectTagging",
     ]
@@ -32,6 +34,7 @@ data "aws_iam_policy_document" "fullaccess_policy_staging" {
   statement {
     actions = [
       "s3:ListBucket",
+      "s3:ListBucketVersions",
     ]
     resources = [
       aws_s3_bucket.staging.arn
@@ -44,6 +47,7 @@ data "aws_iam_policy_document" "fullaccess_policy_staging" {
       "s3:DeleteObjectTagging",
       "s3:GetObject",
       "s3:GetObjectTagging",
+      "s3:GetObjectVersion",
       "s3:PutObject",
       "s3:PutObjectTagging",
     ]
