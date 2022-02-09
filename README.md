@@ -2,8 +2,10 @@
 
 [![GitHub Build Status](https://github.com/cisagov/cool-images-assessment-images/workflows/build/badge.svg)](https://github.com/cisagov/cool-images-assessment-images/actions)
 
-Terraform code to create a role related to the creation of and access to an S3
-bucket to house assessment images in the Images account in the COOL.
+Terraform code to create the resources necessary to provide an S3 bucket to
+house assessment images. This includes an S3 bucket in the Images account, a
+role to manage the bucket, and a policy to allow read access when accessing
+the bucket through the VPC in the Shared Services account.
 
 ## Pre-requisites ##
 
@@ -17,10 +19,15 @@ bucket to house assessment images in the Images account in the COOL.
 - The following COOL accounts and roles must have been created:
   - Images:
     [`cisagov/cool-accounts/images`](https://github.com/cisagov/cool-accounts/tree/develop/images)
+  - Shared Services:
+    [`cisagov/cool-accounts/shared-services`](https://github.com/cisagov/cool-accounts/tree/develop/shared-services)
   - Terraform:
     [`cisagov/cool-accounts/terraform`](https://github.com/cisagov/cool-accounts/tree/develop/terraform)
   - Users:
     [`cisagov/cool-accounts/users`](https://github.com/cisagov/cool-accounts/tree/develop/users)
+- Terraform in
+  [`cisagov/cool-sharedservices-networking`](https://github.com/cisagov/cool-sharedservices-networking)
+  must have been applied.
 
 ## Requirements ##
 
