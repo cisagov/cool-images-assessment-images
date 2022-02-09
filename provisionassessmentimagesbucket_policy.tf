@@ -1,44 +1,24 @@
 # ------------------------------------------------------------------------------
 # Create the IAM policy that allows provisioning of the assessment images bucket
-# in the Images (Production) and Images (Staging) accounts.
+# in the Images account for the current workspace.
 # ------------------------------------------------------------------------------
 
-data "aws_iam_policy_document" "provision_bucket_production" {
+data "aws_iam_policy_document" "provision_bucket" {
   statement {
     actions = [
       "s3:*",
     ]
 
     resources = [
-      "arn:aws:s3:::${local.production_bucket_name}"
+      "arn:aws:s3:::${local.bucket_name}"
     ]
   }
 }
 
-data "aws_iam_policy_document" "provision_bucket_staging" {
-  statement {
-    actions = [
-      "s3:*",
-    ]
-
-    resources = [
-      "arn:aws:s3:::${local.staging_bucket_name}"
-    ]
-  }
-}
-
-resource "aws_iam_policy" "provision_bucket_production" {
-  provider = aws.images_production
+resource "aws_iam_policy" "provision_bucket" {
+  provider = aws.images
 
   description = var.provisionassessmentimagesbucket_policy_description
   name        = var.provisionassessmentimagesbucket_policy_name
-  policy      = data.aws_iam_policy_document.provision_bucket_production.json
-}
-
-resource "aws_iam_policy" "provision_bucket_staging" {
-  provider = aws.images_staging
-
-  description = var.provisionassessmentimagesbucket_policy_description
-  name        = var.provisionassessmentimagesbucket_policy_name
-  policy      = data.aws_iam_policy_document.provision_bucket_staging.json
+  policy      = data.aws_iam_policy_document.provision_bucket.json
 }

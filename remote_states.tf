@@ -4,7 +4,7 @@
 # for this configuration.
 # ------------------------------------------------------------------------------
 
-data "terraform_remote_state" "images_production" {
+data "terraform_remote_state" "images" {
   backend = "s3"
 
   config = {
@@ -16,25 +16,10 @@ data "terraform_remote_state" "images_production" {
     key            = "cool-accounts/images.tfstate"
   }
 
-  workspace = "production"
+  workspace = terraform.workspace
 }
 
-data "terraform_remote_state" "images_staging" {
-  backend = "s3"
-
-  config = {
-    encrypt        = true
-    bucket         = "cisa-cool-terraform-state"
-    dynamodb_table = "terraform-state-lock"
-    profile        = "cool-terraform-backend"
-    region         = "us-east-1"
-    key            = "cool-accounts/images.tfstate"
-  }
-
-  workspace = "staging"
-}
-
-data "terraform_remote_state" "sharedservices_networking_production" {
+data "terraform_remote_state" "sharedservices_networking" {
   backend = "s3"
 
   config = {
@@ -46,22 +31,7 @@ data "terraform_remote_state" "sharedservices_networking_production" {
     key            = "cool-sharedservices-networking/terraform.tfstate"
   }
 
-  workspace = "production"
-}
-
-data "terraform_remote_state" "sharedservices_networking_staging" {
-  backend = "s3"
-
-  config = {
-    encrypt        = true
-    bucket         = "cisa-cool-terraform-state"
-    dynamodb_table = "terraform-state-lock"
-    profile        = "cool-terraform-backend"
-    region         = "us-east-1"
-    key            = "cool-sharedservices-networking/terraform.tfstate"
-  }
-
-  workspace = "staging"
+  workspace = terraform.workspace
 }
 
 data "terraform_remote_state" "terraform" {

@@ -11,7 +11,7 @@
 # ------------------------------------------------------------------------------
 variable "assessment_images_bucket_base_name" {
   type        = string
-  description = "The base name to use for the assessment images S3 buckets. This value will be appended with \"-production\" or \"-staging\" to create the appropriate full bucket name (e.g. With the default value \"cisa-cool-assessment-images-production\" will be used for the bucket in the Images (Production) account)."
+  description = "The base name to use for the assessment images S3 bucket. This value will have the current workspace appended to create the appropriate full bucket name (e.g. With the default value \"cisa-cool-assessment-images-production\" will be used for the bucket in the production workspace)."
   default     = "cisa-cool-assessment-images"
 }
 
