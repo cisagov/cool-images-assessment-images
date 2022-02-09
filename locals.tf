@@ -24,10 +24,6 @@ locals {
   # account.
   production_bucket_name = format("%s-production", var.assessment_images_bucket_base_name)
 
-  # Format the base bucket name into the name to use in the Images (Staging)
-  # account.
-  staging_bucket_name = format("%s-staging", var.assessment_images_bucket_base_name)
-
   # The account ID for the Users account
   users_account_id = data.aws_caller_identity.users.account_id
 }
