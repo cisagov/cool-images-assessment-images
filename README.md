@@ -3,8 +3,7 @@
 [![GitHub Build Status](https://github.com/cisagov/cool-images-assessment-images/workflows/build/badge.svg)](https://github.com/cisagov/cool-images-assessment-images/actions)
 
 Terraform code to create a role related to the creation of and access to an S3
-bucket to house assessment images in the Images (Production) account in the
-COOL.
+bucket to house assessment images in the Images account in the COOL.
 
 ## Pre-requisites ##
 
@@ -16,7 +15,7 @@ COOL.
 - Access to all of the Terraform remote states specified in
   [remote_states.tf](remote_states.tf).
 - The following COOL accounts and roles must have been created:
-  - Images (Production and Staging):
+  - Images:
     [`cisagov/cool-accounts/images`](https://github.com/cisagov/cool-accounts/tree/develop/images)
   - Terraform:
     [`cisagov/cool-accounts/terraform`](https://github.com/cisagov/cool-accounts/tree/develop/terraform)
@@ -35,7 +34,7 @@ COOL.
 | Name | Version |
 |------|---------|
 | aws | ~> 3.69 |
-| aws.images\_production | ~> 3.69 |
+| aws.images | ~> 3.69 |
 | aws.users | ~> 3.69 |
 | terraform | n/a |
 
@@ -49,23 +48,23 @@ COOL.
 
 | Name | Type |
 |------|------|
-| [aws_iam_policy.fullaccess_policy_production](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
-| [aws_iam_policy.provision_bucket_production](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
-| [aws_iam_role.fullaccess_role_production](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
-| [aws_iam_role_policy_attachment.fullaccess_role_production](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_role_policy_attachment.provision_bucket_production](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_s3_bucket.production](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket_ownership_controls.production](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_ownership_controls) | resource |
-| [aws_s3_bucket_policy.vpcreadaccess_policy_production](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy) | resource |
-| [aws_s3_bucket_public_access_block.production](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block) | resource |
+| [aws_iam_policy.fullaccess_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.provision_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_role.fullaccess_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.fullaccess_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.provision_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_s3_bucket.assessment_images](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket_ownership_controls.assessment_images](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_ownership_controls) | resource |
+| [aws_s3_bucket_policy.vpcreadaccess_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy) | resource |
+| [aws_s3_bucket_public_access_block.assessment_images](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_caller_identity.users](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy_document.assume_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
-| [aws_iam_policy_document.fullaccess_policy_production](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
-| [aws_iam_policy_document.provision_bucket_production](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
-| [aws_iam_policy_document.vpcreadaccess_policy_production](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
-| [terraform_remote_state.images_production](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
-| [terraform_remote_state.sharedservices_networking_production](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
+| [aws_iam_policy_document.fullaccess_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.provision_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.vpcreadaccess_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [terraform_remote_state.images](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
+| [terraform_remote_state.sharedservices_networking](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 | [terraform_remote_state.terraform](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 | [terraform_remote_state.users](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 
@@ -73,7 +72,7 @@ COOL.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| assessment\_images\_bucket\_base\_name | The base name to use for the assessment images S3 bucket. This value will be appended with "-production" to create the appropriate full bucket name (e.g. With the default value "cisa-cool-assessment-images-production" will be used for the bucket in the Images (Production) account). | `string` | `"cisa-cool-assessment-images"` | no |
+| assessment\_images\_bucket\_base\_name | The base name to use for the assessment images S3 bucket. This value will have the current workspace appended to create the appropriate full bucket name (e.g. With the default value "cisa-cool-assessment-images-production" will be used for the bucket in the production workspace). | `string` | `"cisa-cool-assessment-images"` | no |
 | assessmentimagesbucketfullaccess\_role\_description | The description to associate with the IAM role and attached policy that allows full access to the assessment images S3 bucket. | `string` | `"Allows full access to the S3 bucket where assessment images are stored."` | no |
 | assessmentimagesbucketfullaccess\_role\_name | The name to associate with the IAM role and attached policy that allows full access to the assessment images S3 bucket. | `string` | `"AssessmentImagesBucketFullAccess"` | no |
 | aws\_region | The AWS region to use for the account provisioners (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
@@ -86,8 +85,8 @@ COOL.
 
 | Name | Description |
 |------|-------------|
-| assessment\_images\_bucket\_production | The S3 bucket to store assessment images in the Images (Production) account. |
-| assessmentimagesbucketfullaccess\_role\_production | The IAM role that allows full access to the assessment images bucket in the Images (Production) account. |
+| assessment\_images\_bucket | The S3 bucket to store assessment images. |
+| assessmentimagesbucketfullaccess\_role | The IAM role that allows full access to the assessment images bucket. |
 | read\_terraform\_state | The IAM policies and role that allow read-only access to the cool-images-assessment-images state in the Terraform state bucket. |
 
 ## Notes ##

@@ -1,11 +1,11 @@
-output "assessment_images_bucket_production" {
-  value       = aws_s3_bucket.production
-  description = "The S3 bucket to store assessment images in the Images (Production) account."
+output "assessment_images_bucket" {
+  value       = aws_s3_bucket.assessment_images
+  description = "The S3 bucket to store assessment images."
 }
 
-output "assessmentimagesbucketfullaccess_role_production" {
-  value       = aws_iam_role.fullaccess_role_production
-  description = "The IAM role that allows full access to the assessment images bucket in the Images (Production) account."
+output "assessmentimagesbucketfullaccess_role" {
+  value       = aws_iam_role.fullaccess_role
+  description = "The IAM role that allows full access to the assessment images bucket."
 }
 
 output "read_terraform_state" {
