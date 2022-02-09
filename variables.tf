@@ -27,12 +27,6 @@ variable "assessmentimagesbucketfullaccess_role_name" {
   default     = "AssessmentImagesBucketFullAccess"
 }
 
-variable "assume_assessmentimagesbucketfullaccess_roles_policy_description" {
-  type        = string
-  description = "The description to associate with the IAM policy that allows a user to assume the IAM roles that allow access to the assessment images S3 bucket in the Images (Production) and Images (Staging) accounts."
-  default     = "Allows assumption of the roles in the Images (Production) and Images (Staging) accounts that allow full access to the assessment images S3 bucket."
-}
-
 variable "aws_region" {
   type        = string
   description = "The AWS region to use for the account provisioners (e.g. \"us-east-1\")."
@@ -61,10 +55,4 @@ variable "tags" {
   type        = map(string)
   description = "Tags to apply to all AWS resources created."
   default     = {}
-}
-
-variable "user_name" {
-  type        = string
-  description = "The name of the user to create in the Users account that can assume the roles allowing access to the assessment images S3 buckets in the Images (Production) and Images (Staging) accounts."
-  default     = "assessment-images-bucket-full-access"
 }
