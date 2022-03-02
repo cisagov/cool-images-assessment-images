@@ -21,6 +21,12 @@ variable "assessmentimagesbucketfullaccess_role_description" {
   default     = "Allows full access to the S3 bucket where assessment images are stored."
 }
 
+variable "assessmentimagesbucketfullaccess_role_session_max_duration" {
+  type        = number
+  description = "The maximum duration in seconds to allow a session that assumes the IAM role that allows full access to the assessment images S3 bucket. The default is the maximum of 12 hours due to using the AWS console to upload objects to the bucket."
+  default     = 43200
+}
+
 variable "assessmentimagesbucketfullaccess_role_name" {
   type        = string
   description = "The name to associate with the IAM role and attached policy that allows full access to the assessment images S3 bucket."

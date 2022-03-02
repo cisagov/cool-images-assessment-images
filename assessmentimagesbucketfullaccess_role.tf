@@ -6,10 +6,11 @@
 resource "aws_iam_role" "fullaccess_role_production" {
   provider = aws.images_production
 
-  assume_role_policy = data.aws_iam_policy_document.assume_role.json
-  description        = var.assessmentimagesbucketfullaccess_role_description
-  name               = var.assessmentimagesbucketfullaccess_role_name
-  tags               = { "Workspace" = "production" }
+  assume_role_policy   = data.aws_iam_policy_document.assume_role.json
+  description          = var.assessmentimagesbucketfullaccess_role_description
+  max_session_duration = var.assessmentimagesbucketfullaccess_role_session_max_duration
+  name                 = var.assessmentimagesbucketfullaccess_role_name
+  tags                 = { "Workspace" = "production" }
 }
 
 resource "aws_iam_role_policy_attachment" "fullaccess_role_production" {
@@ -22,10 +23,11 @@ resource "aws_iam_role_policy_attachment" "fullaccess_role_production" {
 resource "aws_iam_role" "fullaccess_role_staging" {
   provider = aws.images_staging
 
-  assume_role_policy = data.aws_iam_policy_document.assume_role.json
-  description        = var.assessmentimagesbucketfullaccess_role_description
-  name               = var.assessmentimagesbucketfullaccess_role_name
-  tags               = { "Workspace" = "staging" }
+  assume_role_policy   = data.aws_iam_policy_document.assume_role.json
+  description          = var.assessmentimagesbucketfullaccess_role_description
+  max_session_duration = var.assessmentimagesbucketfullaccess_role_session_max_duration
+  name                 = var.assessmentimagesbucketfullaccess_role_name
+  tags                 = { "Workspace" = "staging" }
 }
 
 resource "aws_iam_role_policy_attachment" "fullaccess_role_staging" {
