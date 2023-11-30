@@ -23,21 +23,22 @@ accounts in the COOL.
   - Users:
     [`cisagov/cool-accounts/users`](https://github.com/cisagov/cool-accounts/tree/develop/users)
 
+<!-- BEGIN_TF_DOCS -->
 ## Requirements ##
 
 | Name | Version |
 |------|---------|
 | terraform | ~> 1.0 |
-| aws | ~> 3.69 |
+| aws | ~> 4.9 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.69 |
-| aws.images\_production | ~> 3.69 |
-| aws.images\_staging | ~> 3.69 |
-| aws.users | ~> 3.69 |
+| aws | ~> 4.9 |
+| aws.images\_production | ~> 4.9 |
+| aws.images\_staging | ~> 4.9 |
+| aws.users | ~> 4.9 |
 | terraform | n/a |
 
 ## Modules ##
@@ -107,6 +108,7 @@ accounts in the COOL.
 | assessmentimagesbucketfullaccess\_role\_production | The IAM role that allows full access to the assessment images bucket in the Images (Production) account. |
 | assessmentimagesbucketfullaccess\_role\_staging | The IAM role that allows full access to the assessment images bucket in the Images (Staging) account. |
 | read\_terraform\_state | The IAM policies and role that allow read-only access to the cool-images-assessment-images state in the Terraform state bucket. |
+<!-- END_TF_DOCS -->
 
 ## Notes ##
 
