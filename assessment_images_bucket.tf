@@ -33,10 +33,9 @@ resource "aws_s3_bucket" "production" {
 resource "aws_s3_bucket_public_access_block" "production" {
   provider = aws.images_production
 
-  bucket = aws_s3_bucket.production.id
-
   block_public_acls       = true
   block_public_policy     = true
+  bucket                  = aws_s3_bucket.production.id
   ignore_public_acls      = true
   restrict_public_buckets = true
 }
@@ -85,10 +84,9 @@ resource "aws_s3_bucket" "staging" {
 resource "aws_s3_bucket_public_access_block" "staging" {
   provider = aws.images_staging
 
-  bucket = aws_s3_bucket.staging.id
-
   block_public_acls       = true
   block_public_policy     = true
+  bucket                  = aws_s3_bucket.staging.id
   ignore_public_acls      = true
   restrict_public_buckets = true
 }

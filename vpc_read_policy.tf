@@ -9,9 +9,6 @@ data "aws_iam_policy_document" "vpcreadaccess_policy_production" {
     actions = [
       "s3:ListBucket",
     ]
-    resources = [
-      aws_s3_bucket.production.arn
-    ]
 
     condition {
       test     = "StringEquals"
@@ -28,15 +25,16 @@ data "aws_iam_policy_document" "vpcreadaccess_policy_production" {
         "*",
       ]
     }
+
+    resources = [
+      aws_s3_bucket.production.arn
+    ]
   }
 
   statement {
     actions = [
       "s3:GetObject",
     ]
-    resources = [
-      "${aws_s3_bucket.production.arn}/*"
-    ]
 
     condition {
       test     = "StringEquals"
@@ -53,6 +51,10 @@ data "aws_iam_policy_document" "vpcreadaccess_policy_production" {
         "*",
       ]
     }
+
+    resources = [
+      "${aws_s3_bucket.production.arn}/*"
+    ]
   }
 }
 
@@ -61,9 +63,6 @@ data "aws_iam_policy_document" "vpcreadaccess_policy_staging" {
     actions = [
       "s3:ListBucket",
     ]
-    resources = [
-      aws_s3_bucket.staging.arn
-    ]
 
     condition {
       test     = "StringEquals"
@@ -80,15 +79,16 @@ data "aws_iam_policy_document" "vpcreadaccess_policy_staging" {
         "*",
       ]
     }
+
+    resources = [
+      aws_s3_bucket.staging.arn
+    ]
   }
 
   statement {
     actions = [
       "s3:GetObject",
     ]
-    resources = [
-      "${aws_s3_bucket.staging.arn}/*"
-    ]
 
     condition {
       test     = "StringEquals"
@@ -105,6 +105,10 @@ data "aws_iam_policy_document" "vpcreadaccess_policy_staging" {
         "*",
       ]
     }
+
+    resources = [
+      "${aws_s3_bucket.staging.arn}/*"
+    ]
   }
 }
 
