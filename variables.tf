@@ -4,6 +4,12 @@
 # You must provide a value for each of these parameters.
 # ------------------------------------------------------------------------------
 
+variable "assessment_images_bucket_name" {
+  description = "The name to use for the S3 bucket where assessment images are stored in the Images account."
+  nullable    = false
+  type        = string
+}
+
 variable "terraform_state_bucket" {
   description = "The name of the S3 bucket where Terraform state is stored."
   type        = string
@@ -14,12 +20,6 @@ variable "terraform_state_bucket" {
 #
 # These parameters have reasonable defaults.
 # ------------------------------------------------------------------------------
-variable "assessment_images_bucket_base_name" {
-  default     = "cisa-cool-assessment-images"
-  description = "The base name to use for the assessment images S3 buckets. This value will be appended with \"-production\" or \"-staging\" to create the appropriate full bucket name (e.g. With the default value \"cisa-cool-assessment-images-production\" will be used for the bucket in the Images (Production) account)."
-  nullable    = false
-  type        = string
-}
 
 variable "assessmentimagesbucketfullaccess_role_description" {
   default     = "Allows full access to the S3 bucket where assessment images are stored."
