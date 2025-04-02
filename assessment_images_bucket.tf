@@ -10,19 +10,18 @@ resource "aws_s3_bucket" "assessment_images" {
     aws_iam_role_policy_attachment.provision_bucket
   ]
 
-  acl    = "private"
   bucket = var.assessment_images_bucket_name
+}
 
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
-      }
+resource "aws_s3_bucket_server_side_encryption_configuration" "assessment_images" {
+  provider = aws.images
+
+  bucket = aws_s3_bucket.assessment_images.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
     }
-  }
-
-  versioning {
-    enabled = true
   }
 }
 
@@ -36,6 +35,16 @@ resource "aws_s3_bucket_public_access_block" "assessment_images" {
   bucket                  = aws_s3_bucket.assessment_images.id
   ignore_public_acls      = true
   restrict_public_buckets = true
+}
+
+resource "aws_s3_bucket_versioning" "assessment_images" {
+  provider = aws.images
+
+  bucket = aws_s3_bucket.assessment_images.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
 }
 
 # This ensures every object in the bucket is owned by the bucket owner. This
