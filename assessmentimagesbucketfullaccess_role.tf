@@ -1,38 +1,20 @@
 # ------------------------------------------------------------------------------
-# Create the IAM roles that allow full access to the assessment images
-# buckets in the Images (Production) and Images (Staging) accounts.
+# Create the IAM role that allows full access to the assessment images bucket in
+# the Images account.
 # ------------------------------------------------------------------------------
 
-resource "aws_iam_role" "fullaccess_role_production" {
-  provider = aws.images_production
+resource "aws_iam_role" "fullaccess" {
+  provider = aws.images
 
   assume_role_policy   = data.aws_iam_policy_document.assume_role.json
   description          = var.assessmentimagesbucketfullaccess_role_description
   max_session_duration = var.assessmentimagesbucketfullaccess_role_session_max_duration
   name                 = var.assessmentimagesbucketfullaccess_role_name
-  tags                 = { "Workspace" = "production" }
 }
 
-resource "aws_iam_role_policy_attachment" "fullaccess_role_production" {
-  provider = aws.images_production
+resource "aws_iam_role_policy_attachment" "fullaccess" {
+  provider = aws.images
 
-  policy_arn = aws_iam_policy.fullaccess_policy_production.arn
-  role       = aws_iam_role.fullaccess_role_production.name
-}
-
-resource "aws_iam_role" "fullaccess_role_staging" {
-  provider = aws.images_staging
-
-  assume_role_policy   = data.aws_iam_policy_document.assume_role.json
-  description          = var.assessmentimagesbucketfullaccess_role_description
-  max_session_duration = var.assessmentimagesbucketfullaccess_role_session_max_duration
-  name                 = var.assessmentimagesbucketfullaccess_role_name
-  tags                 = { "Workspace" = "staging" }
-}
-
-resource "aws_iam_role_policy_attachment" "fullaccess_role_staging" {
-  provider = aws.images_staging
-
-  policy_arn = aws_iam_policy.fullaccess_policy_staging.arn
-  role       = aws_iam_role.fullaccess_role_staging.name
+  policy_arn = aws_iam_policy.fullaccess.arn
+  role       = aws_iam_role.fullaccess.name
 }
