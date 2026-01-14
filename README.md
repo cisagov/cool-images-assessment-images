@@ -1,6 +1,8 @@
 # cool-images-assessment-images #
 
 [![GitHub Build Status](https://github.com/cisagov/cool-images-assessment-images/workflows/build/badge.svg)](https://github.com/cisagov/cool-images-assessment-images/actions)
+[![License](https://img.shields.io/github/license/cisagov/cool-images-assessment-images)](https://spdx.org/licenses/)
+[![CodeQL](https://github.com/cisagov/cool-images-assessment-images/workflows/CodeQL/badge.svg)](https://github.com/cisagov/cool-images-assessment-images/actions/workflows/codeql-analysis.yml)
 
 Terraform code to create roles related to the creation of and access to the
 bucket to house assessment images in the COOL Images account.
