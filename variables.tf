@@ -43,6 +43,27 @@ variable "assessmentimagesbucketfullaccess_role_name" {
   type        = string
 }
 
+variable "assessmentimagesbucketreadonly_role_description" {
+  default     = "Allows read-only access to the S3 bucket where assessment images are stored."
+  description = "The description to associate with the IAM role and attached policy that allows read-only access to the assessment images S3 bucket."
+  nullable    = false
+  type        = string
+}
+
+variable "assessmentimagesbucketreadonly_role_session_max_duration" {
+  default     = 43200
+  description = "The maximum duration in seconds to allow a session that assumes the IAM role that allows read-only access to the assessment images S3 bucket. The default is the maximum of 12 hours due to the large filesizes of the images in the bucket."
+  nullable    = false
+  type        = number
+}
+
+variable "assessmentimagesbucketreadonly_role_name" {
+  default     = "AssessmentImagesBucketReadOnly"
+  description = "The name to associate with the IAM role and attached policy that allows read-only access to the assessment images S3 bucket."
+  nullable    = false
+  type        = string
+}
+
 variable "aws_region" {
   default     = "us-east-1"
   description = "The AWS region to use for the account provisioners (e.g. \"us-east-1\")."
