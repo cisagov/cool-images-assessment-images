@@ -19,7 +19,7 @@ data "aws_iam_policy_document" "assessment_account_assume_role_doc" {
   lifecycle {
     precondition {
       condition     = length(local.assessment_account_ids) > 0
-      error_message = "No assessment accounts were discovered. local.assessment_account_ids must contain at least one AWS account ID before generating the assume role policy."
+      error_message = "No assessment accounts were discovered. local.assessment_account_ids must contain at least one AWS account ID before creating the assume role policy."
     }
   }
 }
