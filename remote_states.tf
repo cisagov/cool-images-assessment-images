@@ -19,6 +19,21 @@ data "terraform_remote_state" "images" {
   workspace = terraform.workspace
 }
 
+data "terraform_remote_state" "master" {
+  backend = "s3"
+
+  config = {
+    bucket         = var.terraform_state_bucket
+    dynamodb_table = "terraform-state-lock"
+    encrypt        = true
+    key            = "cool-accounts/master.tfstate"
+    profile        = "cool-terraform-backend"
+    region         = "us-east-1"
+  }
+
+  workspace = terraform.workspace
+}
+
 data "terraform_remote_state" "sharedservices_networking" {
   backend = "s3"
 
