@@ -28,14 +28,14 @@ bucket to house assessment images in the COOL Images account.
 ## Requirements ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | terraform | ~> 1.1 |
 | aws | ~> 6.7 |
 
 ## Providers ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | aws | ~> 6.7 |
 | aws.images | ~> 6.7 |
 | aws.organizationsreadonly | ~> 6.7 |
@@ -45,13 +45,13 @@ bucket to house assessment images in the COOL Images account.
 ## Modules ##
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | read\_terraform\_state | github.com/cisagov/terraform-state-read-role-tf-module | n/a |
 
 ## Resources ##
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_iam_policy.fullaccess](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.provision_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.readonly](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
@@ -84,7 +84,7 @@ bucket to house assessment images in the COOL Images account.
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | assessment\_images\_bucket\_name | The name to use for the S3 bucket where assessment images are stored in the Images account. | `string` | n/a | yes |
 | assessmentimagesbucketfullaccess\_role\_description | The description to associate with the IAM role and attached policy that allows full access to the assessment images S3 bucket. | `string` | `"Allows full access to the S3 bucket where assessment images are stored."` | no |
 | assessmentimagesbucketfullaccess\_role\_name | The name to associate with the IAM role and attached policy that allows full access to the assessment images S3 bucket. | `string` | `"AssessmentImagesBucketFullAccess"` | no |
@@ -102,7 +102,7 @@ bucket to house assessment images in the COOL Images account.
 ## Outputs ##
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | assessment\_images\_bucket | The S3 bucket to store assessment images in the Images account. |
 | assessmentimagesbucketfullaccess\_role | The IAM role that allows full access to the assessment images bucket in the Images account. |
 | assessmentimagesbucketreadonly\_role | The IAM role that allows read-only access to the assessment images bucket in the Images account. |
